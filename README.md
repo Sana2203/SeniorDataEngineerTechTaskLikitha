@@ -58,3 +58,10 @@ Fork the repository.
 Branch this repository following this format `applicant-[yourGithubUsername]`, e.g. user `john-smith` should create a branch `applicant-john-smith`. Commit your changes to your branch, and send a pull request to the main branch. We will review your submission and get back to you with our feedback.
 
 Good luck!
+
+## Local Execution & Notes
+- Set up `.venv` and installed `etl_pipeline/requirements.txt`.
+- Ran `python -m etl_pipeline.main` to load 100 records into `data/blog_warehouse.db` (`l_enriched_posts`).
+- Ran `python -m pytest -v` and saved results to `_evidence/evidence.txt`.
+- **Assumptions**: `body_length > 150` is `'lengthy'` (else `'concise'`); `total_length_with_title` is `len(title) + len(body)`; `post_id` acts as a day offset from `1970-01-01` for day-of-week analysis.
+- **Future Improvements**: Add API retries/backoff, incremental loads, data quality checks, and CI.
